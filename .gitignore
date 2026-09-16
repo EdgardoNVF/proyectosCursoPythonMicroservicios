@@ -1,0 +1,117 @@
+# ==========================================
+# Entornos virtuales
+# ==========================================
+venv/
+.venv/
+env/
+ENV/
+
+# ==========================================
+# Caché y archivos compilados de Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.so
+
+# ==========================================
+# Pruebas y cobertura
+# ==========================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+test-results.xml
+.tox/
+.nox/
+hypothesis/
+
+# ==========================================
+# Análisis estático y herramientas
+# ==========================================
+.mypy_cache/
+.ruff_cache/
+.pyright/
+.dmypy.json
+
+# ==========================================
+# Paquetes y compilación
+# ==========================================
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg
+*.egg-info/
+pip-wheel-metadata/
+wheels/
+
+# ==========================================
+# Variables de entorno y secretos
+# ==========================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+secrets/
+
+# ==========================================
+# Logs y archivos temporales
+# ==========================================
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+
+# ==========================================
+# Bases de datos locales
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# VS Code
+# ==========================================
+.vscode/
+*.code-workspace
+
+# ==========================================
+# PyCharm e IntelliJ
+# ==========================================
+.idea/
+*.iml
+
+# ==========================================
+# Windows
+# ==========================================
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ==========================================
+# macOS
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ==========================================
+# Docker local
+# ==========================================
+docker-compose.override.yml
+
+# ==========================================
+# Kubernetes y Helm: archivos generados
+# ==========================================
+*.tgz
+rendered-manifests/
+helm-output/

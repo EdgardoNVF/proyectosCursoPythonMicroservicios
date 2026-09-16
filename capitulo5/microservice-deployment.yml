@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microserviceuser
+
+spec:
+
+  selector:
+    matchLabels:
+      app: user
+
+  template:
+    metadata:
+      labels:
+        app: user
+
+    spec:
+
+      securityContext:
+        fsGroup: 10001
+
+      initContainers:
+        - name: volume-permissions
+          image: busybox:1.36
+
+          command:
+            - sh
+            - -c
+            - |
+              chown -R 10001:10001 /data
+              chmod -R 775 /data
+
+          securityContext:
+            runAsUser: 0
+
+          volumeMounts:
+            - name: data
+              mountPath: /data
+
+      containers:
+        - name: container
+          image: microuser:1.0.0
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+
+          volumeMounts:
+            - name: data
+              mountPath: /data
+
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+            requests:
+              memory: "50Mi"
+              cpu: "100m"
+
+          ports:
+            - containerPort: 8000
+
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: mypvc
