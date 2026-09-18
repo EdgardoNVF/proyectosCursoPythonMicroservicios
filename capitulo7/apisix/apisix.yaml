@@ -1,0 +1,37 @@
+routes:
+
+  - id: microserviceuser-secured
+
+    uris:
+
+      - /users
+
+      - /users/*
+
+    plugins:
+
+      openid-connect:
+
+        client_id: apisix-client
+
+        client_secret: "$ENV://OIDC_CLIENT_SECRET"
+
+        discovery: "http://keycloak:8080/realms/microservices/.well-known/openid-configuration"
+
+        bearer_only: true
+
+        use_jwks: true
+
+        realm: microservices
+
+
+    upstream:
+
+      type: roundrobin
+
+      nodes:
+
+        "users-microserviceuser:8000": 1
+
+
+#END

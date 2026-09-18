@@ -1,0 +1,45 @@
+replicaCount: 1
+
+image:
+  repository: microuser
+  tag: "4.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8000
+  targetPort: 8000
+
+persistence:
+  enabled: false
+  existingClaim: mypvc
+  mountPath: /data
+
+securityContext:
+  runAsUser: 10001
+  runAsGroup: 10001
+  fsGroup: 10001
+
+resources:
+
+  requests:
+    memory: "50Mi"
+    cpu: "100m"
+
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 50
+
+database:
+  secretName: postgres-secret
+  urlKey: DATABASE_URL
+
+cache:
+  redisUrl: "redis://redis:6379/0"
+  ttlSeconds: 60

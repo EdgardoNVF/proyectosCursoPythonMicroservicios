@@ -1,0 +1,28 @@
+{
+  "realm": "microservices",
+  "enabled": true,
+  "displayName": "Curso Microservicios",
+
+  "clients": [
+    {
+      "clientId": "apisix-client",
+      "name": "APISIX Client",
+
+      "enabled": true,
+
+      "protocol": "openid-connect",
+
+      "clientAuthenticatorType": "client-secret",
+
+      "secret": "apisix-secret",
+
+      "publicClient": false,
+
+      "serviceAccountsEnabled": true,
+
+      "standardFlowEnabled": false,
+
+      "directAccessGrantsEnabled": false
+    }
+  ]
+}
